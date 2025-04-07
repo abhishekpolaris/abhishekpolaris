@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Her Birthday Surprise 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #fff0f5;
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .btn {
+      background-color: #ff69b4;
+      color: white;
+      padding: 14px 28px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 20vh;
+    }
+
+    .btn:hover {
+      background-color: #ff1493;
+    }
+
+    #letter-container {
+      display: none;
+      margin-top: 50px;
+      animation: fadeIn 1.5s ease-in-out forwards;
+    }
+
+    #letter-container img {
+      width: 90%;
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    #proceed-btn {
+      display: none;
+      margin-top: 20px;
+      background-color: #ffa07a;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #proceed-btn:hover {
+      background-color: #ff7f50;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <button id="open-btn" class="btn">Open the Letter 💌</button>
+
+  <div id="letter-container">
+    <img src="./Resources/Black White Hand Writing Vintage Resignation Letter A4 Document.png" alt="Letter Image" />
+    <br/>
+    <button id="proceed-btn">Proceed 👉</button>
+  </div>
+
+  <audio id="bg-music" src="./yu.mp3" loop></audio>
+
+  <script>
+    const openBtn = document.getElementById('open-btn');
+    const letterContainer = document.getElementById('letter-container');
+    const proceedBtn = document.getElementById('proceed-btn');
+    const bgMusic = document.getElementById('bg-music');
+
+    openBtn.addEventListener('click', () => {
+      openBtn.style.display = 'none';
+      letterContainer.style.display = 'block';
+      proceedBtn.style.display = 'inline-block';
+      bgMusic.play().catch(err => {
+        console.log("Audio couldn't autoplay, will retry on next user interaction.");
+      });
+    });
+
+    proceedBtn.addEventListener('click', () => {
+      window.location.href = 'slideshow.html';
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Final Message 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .stars {
+      width: 2px;
+      height: 2px;
+      background: white;
+      position: absolute;
+      animation: blink 1.5s infinite ease-in-out alternate;
+    }
+
+    @keyframes blink {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+
+    .message-container {
+      max-width: 90%;
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      0% {opacity: 0; transform: translateY(50px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+
+    .message-container h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #ffccff;
+    }
+
+    .message-container p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #f8f8f8;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      background-color: #ff69b4;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #ff1493;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="message-container">
+    <h1>From My Heart to Yours 💌</h1>
+    <p>
+      You’re more than beautiful. You’re peace, you’re strength, you’re home.<br>
+      From your soft giggles to your fierce dreams—everything about you inspires me.<br><br>
+
+      Thank you for existing in my universe,<br>
+      And if I could, I’d choose you in every one of my lifetimes.<br><br>
+
+      I don’t know where this journey leads us,<br>
+      But I do know I’ll always cheer for your dreams,<br>
+      Pray for your peace,<br>
+      And hold space for your light.<br><br>
+
+      — With all my love, always,<br>
+      <strong>Abhishek 💫</strong>
+    </p>
+    <button class="btn" onclick="window.location.href='index.html'">Replay the Magic 🎞️</button>
+  </div>
+
+  <!-- Random stars -->
+  <script>
+    <audio id="bg-music" src="./slideh.mp3" loop></audio>
+    const bgMusic = document.getElementById('bg-music');
+  const savedTime = sessionStorage.getItem('audioTime');
+
+  if (savedTime) {
+    bgMusic.currentTime = parseFloat(savedTime);
+  }
+
+  bgMusic.play().catch(() => {
+    console.log("User interaction required to play the audio.");
+  });
+
+    const totalStars = 60;
+    for (let i = 0; i < totalStars; i++) {
+      let star = document.createElement("div");
+      star.className = "stars";
+      star.style.top = Math.random() * 100 + "vh";
+      star.style.left = Math.random() * 100 + "vw";
+      star.style.width = (Math.random() * 2 + 1) + "px";
+      star.style.height = star.style.width;
+      star.style.animationDuration = (Math.random() * 3 + 1) + "s";
+      document.body.appendChild(star);
+    }
+  </script>
+
+</body>
+</html>

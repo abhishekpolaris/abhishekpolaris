@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Slideshow 📸</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: #fff0f5;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .slideshow-container {
+      position: relative;
+      max-width: 90%;
+      height: 70vh;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 12px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      border-radius: 50%;
+      background-color:transparent;
+      user-select: none;
+      transition: 0.3s;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: transparent;
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+
+    #proceed-btn {
+      margin-top: 20px;
+      background-color: #ffa07a;
+      color: white;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: none;
+    }
+
+    #proceed-btn:hover {
+      background-color: #ff7f50;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slideshow-container">
+    <div class="slide"><img src="./Resources/ChatGPT Image Apr 7, 2025, 04_09_00 PM.png" alt="Slide 1"></div>
+    <div class="slide"><img src="./Resources/ChatGPT Image Apr 7, 2025, 04_15_43 PM.png" alt="Slide 2"></div>
+    <div class="slide"><img src="./Resources/ChatGPT Image Apr 7, 2025, 04_31_26 PM.png" alt="Slide 3"></div>
+    <div class="slide"><img src="./Resources/ChatGPT Image Apr 7, 2025, 04_44_34 PM.png" alt="Slide 4"></div>
+    <div class="slide"><img src="./Resources/ChatGPT Image Apr 7, 2025, 04_57_39 PM.png" alt="Slide 5"></div>
+    <div class="slide"><img src="./Resources/ChatGPT Image Apr 7, 2025, 04_57_46 PM.png" alt="Slide 6"></div>
+
+    <a class="prev" onclick="changeSlide(-1)">❮</a>
+    <a class="next" onclick="changeSlide(1)">❯</a>
+  </div>
+
+  <button id="proceed-btn" onclick="window.location.href='final.html'">Proceed 💌</button>
+
+  <audio autoplay loop>
+    <source src="./slideh.mp3" type="audio/mp3" />
+  </audio>
+
+  <script>
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName("slide");
+    const proceedBtn = document.getElementById("proceed-btn");
+
+    function showSlide(n) {
+      if (n >= slides.length) slideIndex = 0;
+      if (n < 0) slideIndex = slides.length - 1;
+
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+
+      slides[slideIndex].style.display = "block";
+
+      // Show proceed button only on last slide
+      if (slideIndex === slides.length - 1) {
+        proceedBtn.style.display = "block";
+      } else {
+        proceedBtn.style.display = "none";
+      }
+    }
+
+    function changeSlide(n) {
+      slideIndex += n;
+      if (slideIndex >= slides.length) slideIndex = 0;
+      if (slideIndex < 0) slideIndex = slides.length - 1;
+      showSlide(slideIndex);
+    }
+
+    showSlide(slideIndex); // Initialize first slide
+  </script>
+
+</body>
+</html>
